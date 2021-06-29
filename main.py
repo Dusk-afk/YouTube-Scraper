@@ -10,9 +10,50 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import (
-    QPropertyAnimation, QParallelAnimationGroup, QPoint, QSequentialAnimationGroup, QSize)
+    QEvent, QPropertyAnimation, QParallelAnimationGroup, QPoint, QSequentialAnimationGroup, QSize)
 import webbrowser
 
+class Button(QtWidgets.QPushButton):
+
+    def __init__(self, parent=None, pos = (0,0,0,0)):
+        super(Button, self).__init__(parent)
+        self.pos = pos
+        self.original_pos_x = pos[0]
+        self.original_pos_y = pos[1]
+        self.original_pos_width = pos[2]
+        self.original_pos_height = pos[3]
+        # other initializations...
+
+    def enterEvent(self,QEvent):
+        self.enterHover()
+
+    def leaveEvent(self, QEvent):
+        self.exitHover()
+
+    def enterHover(self):
+
+        self.anim = QPropertyAnimation(self, b"pos")
+        self.anim.setEndValue(QPoint(self.pos[0]+3, self.pos[1]+3))
+        self.anim.setDuration(100)
+        self.anim_2 = QPropertyAnimation(self, b"size")
+        self.anim_2.setEndValue(QSize(self.pos[2]-8, self.pos[3]-8))
+        self.anim_2.setDuration(100)
+        self.anim_group_1 = QParallelAnimationGroup()
+        self.anim_group_1.addAnimation(self.anim)
+        self.anim_group_1.addAnimation(self.anim_2)
+        self.anim_group_1.start()
+
+    def exitHover(self):
+        self.anim_3 = QPropertyAnimation(self, b"pos")
+        self.anim_3.setEndValue(QPoint(self.pos[0], self.pos[1]))
+        self.anim_3.setDuration(100)
+        self.anim_4 = QPropertyAnimation(self, b"size")
+        self.anim_4.setEndValue(QSize(self.pos[2], self.pos[3]))
+        self.anim_4.setDuration(100)
+        self.anim_group_2 = QParallelAnimationGroup()
+        self.anim_group_2.addAnimation(self.anim_3)
+        self.anim_group_2.addAnimation(self.anim_4)
+        self.anim_group_2.start()
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -25,6 +66,7 @@ class Ui_MainWindow(object):
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setMinimumSize(QtCore.QSize(1000, 600))
         MainWindow.setMaximumSize(QtCore.QSize(1000, 600))
+        MainWindow.setWindowTitle("YouTube Scraper")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.bg = QtWidgets.QLabel(self.centralwidget)
@@ -36,7 +78,7 @@ class Ui_MainWindow(object):
         self.titleLabel.setStyleSheet("image: url(:/BG/title.png);")
         self.titleLabel.setText("")
         self.titleLabel.setObjectName("titleLabel")
-        self.button_1 = QtWidgets.QPushButton(self.centralwidget)
+        self.button_1 = Button(self.centralwidget, (361, 170, 281, 51))
         self.button_1.setGeometry(QtCore.QRect(361, 170, 281, 51))
         self.button_1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.button_1.setStyleSheet("QPushButton{\n"
@@ -49,7 +91,7 @@ class Ui_MainWindow(object):
 "}")
         self.button_1.setText("")
         self.button_1.setObjectName("button_1")
-        self.button_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.button_2 = Button(self.centralwidget, (361, 255, 281, 51))
         self.button_2.setGeometry(QtCore.QRect(361, 255, 281, 51))
         self.button_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.button_2.setStyleSheet("QPushButton{\n"
@@ -62,7 +104,7 @@ class Ui_MainWindow(object):
 "}")
         self.button_2.setText("")
         self.button_2.setObjectName("button_2")
-        self.discordButton = QtWidgets.QPushButton(self.centralwidget)
+        self.discordButton = Button(self.centralwidget, (443, 399, 111, 87))
         self.discordButton.setGeometry(QtCore.QRect(443, 399, 111, 87))
         self.discordButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.discordButton.setStyleSheet("QPushButton{\n"
@@ -91,41 +133,16 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self.button_1.clicked.connect(self.animationButton1)
-        self.button_2.clicked.connect(self.animationButton2)
-        self.discordButton.clicked.connect(self.animationDiscordButton)
+        self.discordButton.clicked.connect(lambda : webbrowser.open("https://discord.gg/F4E2TjgYqC"))
+
+        
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        # MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.bg.setText(_translate("MainWindow", "TextLabel"))
+        # print(self.button_1.eventFilter(self.button_1, None))
 
-
-    def animationButton1(self):
-        self.anim = QPropertyAnimation(self.button_1, b"pos")
-        self.anim.setEndValue(QPoint(363, 173))
-        self.anim.setDuration(100)
-        self.anim_2 = QPropertyAnimation(self.button_1, b"size")
-        self.anim_2.setEndValue(QSize(275, 45))
-        self.anim_2.setDuration(100)
-        self.anim_group_1 = QParallelAnimationGroup()
-        self.anim_group_1.addAnimation(self.anim)
-        self.anim_group_1.addAnimation(self.anim_2)
-
-        self.anim_3 = QPropertyAnimation(self.button_1, b"pos")
-        self.anim_3.setEndValue(QPoint(361, 170))
-        self.anim_3.setDuration(100)
-        self.anim_4 = QPropertyAnimation(self.button_1, b"size")
-        self.anim_4.setEndValue(QSize(281, 51))
-        self.anim_4.setDuration(100)
-        self.anim_group_2 = QParallelAnimationGroup()
-        self.anim_group_2.addAnimation(self.anim_3)
-        self.anim_group_2.addAnimation(self.anim_4)
-
-        self.anim_final_group = QSequentialAnimationGroup()
-        self.anim_final_group.addAnimation(self.anim_group_1)
-        self.anim_final_group.addAnimation(self.anim_group_2)
-        self.anim_final_group.start()
    
     def animationButton2(self):
         self.anim = QPropertyAnimation(self.button_2, b"pos")
