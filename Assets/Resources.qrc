@@ -7,6 +7,19 @@
     <file>bg.png</file>
     <file>button_1.png</file>
   </qresource>
+  <qresource prefix="Screen_2">
+    <file>keyword_by_url.png</file>
+    <file>copy_tags_hover.png</file>
+    <file>search_hover.png</file>
+    <file>home_hover.png</file>
+    <file>copy_tags.png</file>
+    <file>tagsFieldBG.png</file>
+    <file>search.png</file>
+    <file>textFieldBG.png</file>
+    <file>home.png</file>
+    <file>search _keyword.png</file>
+    <file>title_2.png</file>
+  </qresource>
   <qresource prefix="discord">
     <file>discord_logo.png</file>
   </qresource>

@@ -107,7 +107,12 @@ class Ui_MainWindow(object):
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
-        self.button_2 = Button(self.frame, (361, 255, 281, 51))
+        self.stackedWidget = QtWidgets.QStackedWidget(self.frame)
+        self.stackedWidget.setGeometry(QtCore.QRect(0, 0, 1000, 600))
+        self.stackedWidget.setObjectName("stackedWidget")
+        self.home_screen = QtWidgets.QWidget()
+        self.home_screen.setObjectName("home_screen")
+        self.button_2 = Button(self.home_screen, (361, 255, 281, 51))
         self.button_2.setGeometry(QtCore.QRect(361, 255, 281, 51))
         self.button_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.button_2.setStyleSheet("QPushButton{\n"
@@ -120,17 +125,17 @@ class Ui_MainWindow(object):
 "}")
         self.button_2.setText("")
         self.button_2.setObjectName("button_2")
-        self.label = QtWidgets.QLabel(self.frame)
+        self.label = QtWidgets.QLabel(self.home_screen)
         self.label.setGeometry(QtCore.QRect(341, 375, 321, 161))
         self.label.setStyleSheet("image: url(:/BG/bottom_text.png);")
         self.label.setText("")
         self.label.setObjectName("label")
-        self.bg = QtWidgets.QLabel(self.frame)
+        self.bg = QtWidgets.QLabel(self.home_screen)
         self.bg.setGeometry(QtCore.QRect(0, 0, 1000, 600))
         self.bg.setStyleSheet('''background-image: url(:/BG/bg.png);
         border-radius: 20px''')
         self.bg.setObjectName("bg")
-        self.button_1 = Button(self.frame, (361, 170, 281, 51))
+        self.button_1 = Button(self.home_screen, (361, 170, 281, 51))
         self.button_1.setGeometry(QtCore.QRect(361, 170, 281, 51))
         self.button_1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.button_1.setStyleSheet("QPushButton{\n"
@@ -143,12 +148,12 @@ class Ui_MainWindow(object):
 "}")
         self.button_1.setText("")
         self.button_1.setObjectName("button_1")
-        self.titleLabel = QtWidgets.QLabel(self.frame)
+        self.titleLabel = QtWidgets.QLabel(self.home_screen)
         self.titleLabel.setGeometry(QtCore.QRect(269, 20, 431, 111))
         self.titleLabel.setStyleSheet("image: url(:/BG/title.png);")
         self.titleLabel.setText("")
         self.titleLabel.setObjectName("titleLabel")
-        self.discordButton = Button(self.frame, (443, 399, 111, 87))
+        self.discordButton = Button(self.home_screen, (443, 399, 111, 87))
         self.discordButton.setGeometry(QtCore.QRect(443, 399, 111, 87))
         self.discordButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.discordButton.setStyleSheet("QPushButton{\n"
@@ -161,7 +166,7 @@ class Ui_MainWindow(object):
 "}")
         self.discordButton.setText("")
         self.discordButton.setObjectName("discordButton")
-        self.title_bar = QtWidgets.QFrame(self.frame)
+        self.title_bar = QtWidgets.QFrame(self.home_screen)
         self.title_bar.setGeometry(QtCore.QRect(0, 0, 1000, 50))
         self.title_bar.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.title_bar.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -208,20 +213,174 @@ class Ui_MainWindow(object):
         self.button_2.raise_()
         self.discordButton.raise_()
         self.title_bar.raise_()
+
+        # ##################################
+        # Added second widget
+        # ##################################
+
+        self.stackedWidget.addWidget(self.home_screen)
+        self.screen_1 = QtWidgets.QWidget()
+        self.screen_1.setObjectName("screen_1")
+        self.bg_2 = QtWidgets.QLabel(self.screen_1)
+        self.bg_2.setGeometry(QtCore.QRect(0, 0, 1000, 600))
+        self.bg_2.setStyleSheet('''background-image: url(:/BG/bg.png);
+        border-radius: 20px''')
+        self.bg_2.setObjectName("bg_2")
+        self.titleLabel2 = QtWidgets.QLabel(self.screen_1)
+        self.titleLabel2.setGeometry(QtCore.QRect(70, 208, 279, 114))
+        self.titleLabel2.setStyleSheet("image: url(:/Screen_2/title_2.png);")
+        self.titleLabel2.setObjectName("titleLabel2")
+        self.discordButton2 = Button(self.screen_1, (170, 350, 91, 71))
+        self.discordButton2.setGeometry(QtCore.QRect(170, 350, 91, 71))
+        self.discordButton2.setStyleSheet("QPushButton{\n"
+"image: url(:/discord/discord_logo.png);\n"
+"border-radius: 0px 15px 15px 15px;\n"
+"}\n"
+"QPushButton::Hover{\n"
+"image: url(:/BG/discord_logo_hover.png);\n"
+"border-radius: 0px 15px 15px 15px;\n"
+"}")
+        self.discordButton2.setText("")
+        self.discordButton2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.discordButton2.setObjectName("discordButton2")
+        self.screenTitleLabel = QtWidgets.QLabel(self.screen_1)
+        self.screenTitleLabel.setGeometry(QtCore.QRect(418, 126, 211, 31))
+        self.screenTitleLabel.setStyleSheet("image: url(:/Screen_2/search _keyword.png);")
+        self.screenTitleLabel.setText("")
+        self.screenTitleLabel.setObjectName("screenTitleLabel")
+        self.homeButton = QtWidgets.QPushButton(self.screen_1)
+        self.homeButton.setGeometry(QtCore.QRect(418, 84, 41, 41))
+        self.homeButton.setStyleSheet("QPushButton{\n"
+"image: url(:/Screen_2/home.png);\n"
+"border-radius: 0px 15px 15px 15px;\n"
+"}\n"
+"QPushButton::Hover{\n"
+"image: url(:/Screen_2/home_hover.png);\n"
+"border-radius: 0px 15px 15px 15px;\n"
+"}")
+        self.homeButton.setText("")
+        self.homeButton.setObjectName("homeButton")
+        self.homeButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.textFieldBGLabel = QtWidgets.QLabel(self.screen_1)
+        self.textFieldBGLabel.setGeometry(QtCore.QRect(390, 152, 591, 101))
+        self.textFieldBGLabel.setStyleSheet("image: url(:/Screen_2/textFieldBG.png);")
+        self.textFieldBGLabel.setText("")
+        self.textFieldBGLabel.setObjectName("textFieldBGLabel")
+        self.searchButton = QtWidgets.QPushButton(self.screen_1)
+        self.searchButton.setGeometry(QtCore.QRect(418, 230, 191, 41))
+        self.searchButton.setStyleSheet("QPushButton{\n"
+"image: url(:/Screen_2/search.png);\n"
+"border-radius: 0px 15px 15px 15px;\n"
+"}\n"
+"QPushButton::Hover{\n"
+"    image: url(:/Screen_2/search_hover.png);\n"
+"border-radius: 0px 15px 15px 15px;\n"
+"}")
+        self.searchButton.setText("")
+        self.searchButton.setObjectName("searchButton")
+        self.searchButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.tagsFieldBGLabel = QtWidgets.QLabel(self.screen_1)
+        self.tagsFieldBGLabel.setGeometry(QtCore.QRect(385, 280, 601, 241))
+        self.tagsFieldBGLabel.setStyleSheet("image: url(:/Screen_2/tagsFieldBG.png);")
+        self.tagsFieldBGLabel.setText("")
+        self.tagsFieldBGLabel.setObjectName("tagsFieldBGLabel")
+        self.copyTagsButton = QtWidgets.QPushButton(self.screen_1)
+        self.copyTagsButton.setGeometry(QtCore.QRect(418, 485, 191, 51))
+        self.copyTagsButton.setStyleSheet("QPushButton{\n"
+"image: url(:/Screen_2/copy_tags.png);\n"
+"border-radius: 0px 15px 15px 15px;}\n"
+"QPushButton::Hover{\n"
+"    image: url(:/Screen_2/copy_tags_hover.png);\n"
+"border-radius: 0px 15px 15px 15px;}")
+        self.copyTagsButton.setText("")
+        self.copyTagsButton.setObjectName("copyTagsButton")
+        self.copyTagsButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.lineEdit = QtWidgets.QLineEdit(self.screen_1)
+        self.lineEdit.setGeometry(QtCore.QRect(435, 173, 501, 35))
+        self.lineEdit.setStyleSheet("background-color: rgba(0,0,0,0);\n"
+"font: 12pt;\n"
+"border:none;\n"
+"border-bottom:4px solid qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(12, 43, 225, 255), stop:1 rgba(93, 211, 255, 255));\n"
+"color:rgba(0,0,0,240);\n"
+"padding-bottom:7px;")
+        self.lineEdit.setObjectName("lineEdit")
+        self.title_btn_2 = QtWidgets.QFrame(self.screen_1)
+        self.title_btn_2.setGeometry(QtCore.QRect(850, 0, 150, 50))
+        self.title_btn_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.title_btn_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.title_btn_2.setObjectName("title_btn_2")
+        self.closeButton_2 = QtWidgets.QPushButton(self.title_btn_2)
+        self.closeButton_2.setGeometry(QtCore.QRect(115, 10, 20, 20))
+        self.closeButton_2.setStyleSheet("QPushButton{\n"
+"border-radius: 10px;\n"
+"background-color: rgb(255, 81, 84);\n"
+"}\n"
+"QPushButton::Hover{\n"
+"    background-color: rgb(255, 43, 46);\n"
+"}")
+        self.closeButton_2.setText("")
+        self.closeButton_2.setObjectName("closeButton_2")
+        self.minimizeButton_2 = QtWidgets.QPushButton(self.title_btn_2)
+        self.minimizeButton_2.setGeometry(QtCore.QRect(85, 10, 20, 20))
+        self.minimizeButton_2.setStyleSheet("QPushButton{\n"
+"border-radius: 10px;\n"
+"background-color: rgb(24, 204, 74);\n"
+"}\n"
+"QPushButton::Hover{\n"
+"    background-color: rgb(0, 250, 69);\n"
+"}\n"
+"")
+        self.minimizeButton_2.setText("")
+        self.minimizeButton_2.setObjectName("minimizeButton_2")
+        self.stackedWidget.addWidget(self.screen_1)
         MainWindow.setCentralWidget(self.centralwidget)
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        self.tagsFieldBGLabel.hide()
+        self.copyTagsButton.hide()
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         self.discordButton.clicked.connect(lambda : webbrowser.open("https://discord.gg/F4E2TjgYqC"))
+        self.discordButton2.clicked.connect(lambda : webbrowser.open("https://discord.gg/F4E2TjgYqC"))
         self.closeButton.clicked.connect(lambda : sys.exit())
+        self.closeButton_2.clicked.connect(lambda : sys.exit())
         self.minimizeButton.clicked.connect(MainWindow.showMinimized)
+        self.minimizeButton_2.clicked.connect(MainWindow.showMinimized)
+        self.button_1.clicked.connect(self.switchToButton1)
+        self.button_2.clicked.connect(self.switchToButton2)
+        self.homeButton.clicked.connect(lambda : self.stackedWidget.setCurrentWidget(self.home_screen))
+        self.searchButton.clicked.connect(self.searchTask)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        # MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.bg.setText(_translate("MainWindow", "TextLabel"))
-        # print(self.button_1.eventFilter(self.button_1, None))
+        self.lineEdit.setPlaceholderText(_translate("MainWindow", "Place Holder Text"))
+
+    def searchTask(self):
+        if self.lineEdit.text() != "":
+            self.tagsFieldBGLabel.show()
+            self.copyTagsButton.show()
+        else:
+            pass
+
+    def switchToButton1(self):
+        self.tagsFieldBGLabel.hide()
+        self.copyTagsButton.hide()
+
+        self.stackedWidget.setCurrentWidget(self.screen_1)
+        self.screenTitleLabel.setStyleSheet("image: url(:/Screen_2/search _keyword.png);")
+        self.lineEdit.setText("")
+        self.lineEdit.setPlaceholderText("Enter Keyword")
+
+    def switchToButton2(self):
+        self.tagsFieldBGLabel.hide()
+        self.copyTagsButton.hide()
+
+        self.stackedWidget.setCurrentWidget(self.screen_1)
+        self.screenTitleLabel.setStyleSheet("image: url(:/Screen_2/keyword_by_url.png);")
+        self.lineEdit.setText("")
+        self.lineEdit.setPlaceholderText("Enter URL (https://www.youtube.com/watch?v=dQw4w9WgXcQ)")
 
 import Resources
 
