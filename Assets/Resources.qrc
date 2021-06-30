@@ -3,8 +3,8 @@
     <file>discord_logo_hover.png</file>
     <file>bottom_text.png</file>
     <file>button_1_hover.png</file>
-    <file>bg.png</file>
     <file>title.png</file>
+    <file>bg.png</file>
     <file>button_1.png</file>
   </qresource>
   <qresource prefix="discord">

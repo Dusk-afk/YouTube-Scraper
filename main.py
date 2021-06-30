@@ -128,7 +128,7 @@ class Ui_MainWindow(object):
         self.bg = QtWidgets.QLabel(self.frame)
         self.bg.setGeometry(QtCore.QRect(0, 0, 1000, 600))
         self.bg.setStyleSheet('''background-image: url(:/BG/bg.png);
-        border-radius: 12px''')
+        border-radius: 20px''')
         self.bg.setObjectName("bg")
         self.button_1 = Button(self.frame, (361, 170, 281, 51))
         self.button_1.setGeometry(QtCore.QRect(361, 170, 281, 51))
@@ -177,7 +177,7 @@ class Ui_MainWindow(object):
         self.title_btn.setFrameShadow(QtWidgets.QFrame.Raised)
         self.title_btn.setObjectName("title_btn")
         self.closeButton = QtWidgets.QPushButton(self.title_btn)
-        self.closeButton.setGeometry(QtCore.QRect(120, 8, 20, 20))
+        self.closeButton.setGeometry(QtCore.QRect(115, 10, 20, 20))
         self.closeButton.setStyleSheet("QPushButton{\n"
 "border-radius: 10px;\n"
 "background-color: rgb(255, 81, 84);\n"
@@ -188,7 +188,7 @@ class Ui_MainWindow(object):
         self.closeButton.setText("")
         self.closeButton.setObjectName("closeButton")
         self.minimizeButton = QtWidgets.QPushButton(self.title_btn)
-        self.minimizeButton.setGeometry(QtCore.QRect(92, 8, 20, 20))
+        self.minimizeButton.setGeometry(QtCore.QRect(85, 10, 20, 20))
         self.minimizeButton.setStyleSheet("QPushButton{\n"
 "border-radius: 10px;\n"
 "background-color: rgb(24, 204, 74);\n"
