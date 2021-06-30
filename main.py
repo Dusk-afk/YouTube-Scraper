@@ -66,32 +66,17 @@ class Ui_MainWindow(object):
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setMinimumSize(QtCore.QSize(1000, 600))
         MainWindow.setMaximumSize(QtCore.QSize(1000, 600))
-        MainWindow.setWindowTitle("YouTube Scraper")
+        MainWindow.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        MainWindow.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.bg = QtWidgets.QLabel(self.centralwidget)
-        self.bg.setGeometry(QtCore.QRect(0, 0, 1000, 600))
-        self.bg.setStyleSheet("background-image: url(:/BG/bg.png);")
-        self.bg.setObjectName("bg")
-        self.titleLabel = QtWidgets.QLabel(self.centralwidget)
-        self.titleLabel.setGeometry(QtCore.QRect(269, 20, 431, 111))
-        self.titleLabel.setStyleSheet("image: url(:/BG/title.png);")
-        self.titleLabel.setText("")
-        self.titleLabel.setObjectName("titleLabel")
-        self.button_1 = Button(self.centralwidget, (361, 170, 281, 51))
-        self.button_1.setGeometry(QtCore.QRect(361, 170, 281, 51))
-        self.button_1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.button_1.setStyleSheet("QPushButton{\n"
-"border-radius: 0px 15px 15px 15px;\n"
-"image: url(:/BG/button_1.png);\n"
-"}\n"
-"QPushButton::Hover{\n"
-"border-radius: 0px 15px 15px 15px;\n"
-"image: url(:/BG/button_1_hover.png);\n"
-"}")
-        self.button_1.setText("")
-        self.button_1.setObjectName("button_1")
-        self.button_2 = Button(self.centralwidget, (361, 255, 281, 51))
+        self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setGeometry(QtCore.QRect(0, 0, 1000, 600))
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.button_2 = Button(self.frame, (361, 255, 281, 51))
         self.button_2.setGeometry(QtCore.QRect(361, 255, 281, 51))
         self.button_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.button_2.setStyleSheet("QPushButton{\n"
@@ -104,7 +89,35 @@ class Ui_MainWindow(object):
 "}")
         self.button_2.setText("")
         self.button_2.setObjectName("button_2")
-        self.discordButton = Button(self.centralwidget, (443, 399, 111, 87))
+        self.label = QtWidgets.QLabel(self.frame)
+        self.label.setGeometry(QtCore.QRect(341, 375, 321, 161))
+        self.label.setStyleSheet("image: url(:/BG/bottom_text.png);")
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.bg = QtWidgets.QLabel(self.frame)
+        self.bg.setGeometry(QtCore.QRect(0, 0, 1000, 600))
+        self.bg.setStyleSheet('''background-image: url(:/BG/bg.png);
+        border-radius: 12px''')
+        self.bg.setObjectName("bg")
+        self.button_1 = Button(self.frame, (361, 170, 281, 51))
+        self.button_1.setGeometry(QtCore.QRect(361, 170, 281, 51))
+        self.button_1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.button_1.setStyleSheet("QPushButton{\n"
+"border-radius: 0px 15px 15px 15px;\n"
+"image: url(:/BG/button_1.png);\n"
+"}\n"
+"QPushButton::Hover{\n"
+"border-radius: 0px 15px 15px 15px;\n"
+"image: url(:/BG/button_1_hover.png);\n"
+"}")
+        self.button_1.setText("")
+        self.button_1.setObjectName("button_1")
+        self.titleLabel = QtWidgets.QLabel(self.frame)
+        self.titleLabel.setGeometry(QtCore.QRect(269, 20, 431, 111))
+        self.titleLabel.setStyleSheet("image: url(:/BG/title.png);")
+        self.titleLabel.setText("")
+        self.titleLabel.setObjectName("titleLabel")
+        self.discordButton = Button(self.frame, (443, 399, 111, 87))
         self.discordButton.setGeometry(QtCore.QRect(443, 399, 111, 87))
         self.discordButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.discordButton.setStyleSheet("QPushButton{\n"
@@ -117,17 +130,53 @@ class Ui_MainWindow(object):
 "}")
         self.discordButton.setText("")
         self.discordButton.setObjectName("discordButton")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(341, 375, 321, 161))
-        self.label.setStyleSheet("image: url(:/BG/bottom_text.png);")
-        self.label.setText("")
-        self.label.setObjectName("label")
+        self.title_bar = QtWidgets.QFrame(self.frame)
+        self.title_bar.setGeometry(QtCore.QRect(0, 0, 1000, 50))
+        self.title_bar.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.title_bar.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.title_bar.setObjectName("title_bar")
+        self.title_text = QtWidgets.QFrame(self.title_bar)
+        self.title_text.setGeometry(QtCore.QRect(0, 0, 850, 50))
+        self.title_text.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.title_text.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.title_text.setObjectName("title_text")
+        self.title_btn = QtWidgets.QFrame(self.title_bar)
+        self.title_btn.setGeometry(QtCore.QRect(850, 0, 150, 50))
+        self.title_btn.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.title_btn.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.title_btn.setObjectName("title_btn")
+        self.closeButton = QtWidgets.QPushButton(self.title_btn)
+        self.closeButton.setGeometry(QtCore.QRect(120, 8, 20, 20))
+        self.closeButton.setStyleSheet("QPushButton{\n"
+"border-radius: 10px;\n"
+"background-color: rgb(255, 81, 84);\n"
+"}\n"
+"QPushButton::Hover{\n"
+"    background-color: rgb(255, 43, 46);\n"
+"}")
+        self.closeButton.setText("")
+        self.closeButton.setObjectName("closeButton")
+        self.minimizeButton = QtWidgets.QPushButton(self.title_btn)
+        self.minimizeButton.setGeometry(QtCore.QRect(92, 8, 20, 20))
+        self.minimizeButton.setStyleSheet("QPushButton{\n"
+"border-radius: 10px;\n"
+"background-color: rgb(24, 204, 74);\n"
+"}\n"
+"QPushButton::Hover{\n"
+"    background-color: rgb(0, 250, 69);\n"
+"}\n"
+"")
+        self.minimizeButton.setText("")
+        self.minimizeButton.setObjectName("minimizeButton")
+        self.title_btn.raise_()
+        self.title_text.raise_()
         self.bg.raise_()
-        self.titleLabel.raise_()
         self.button_1.raise_()
-        self.button_2.raise_()
+        self.titleLabel.raise_()
         self.label.raise_()
+        self.button_2.raise_()
         self.discordButton.raise_()
+        self.title_bar.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -136,6 +185,8 @@ class Ui_MainWindow(object):
         self.discordButton.clicked.connect(lambda : webbrowser.open("https://discord.gg/F4E2TjgYqC"))
 
         
+    def mousePressEvent(self, event):
+        self.dragPos = event.globalPos()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

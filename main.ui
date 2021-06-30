@@ -219,7 +219,7 @@ border-radius: 0px 15px 15px 15px;
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="closeButton">
        <property name="geometry">
         <rect>
          <x>120</x>
@@ -229,8 +229,36 @@ border-radius: 0px 15px 15px 15px;
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-radius: 10px;
-background-color: rgb(255, 0, 4);</string>
+        <string notr="true">QPushButton{
+border-radius: 10px;
+background-color: rgb(255, 81, 84);
+}
+QPushButton::Hover{
+	background-color: rgb(255, 43, 46);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="minimizeButton">
+       <property name="geometry">
+        <rect>
+         <x>92</x>
+         <y>8</y>
+         <width>20</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border-radius: 10px;
+background-color: rgb(24, 204, 74);
+}
+QPushButton::Hover{
+	background-color: rgb(0, 250, 69);
+}
+</string>
        </property>
        <property name="text">
         <string/>
