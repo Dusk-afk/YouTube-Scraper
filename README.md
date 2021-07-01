@@ -8,4 +8,4 @@ Welcome and thanks for visiting this page. If you are a YouTuber and is in searc
 ### Credits
 _Software Developer_ : Dusk [[GitHub](https://github.com/Dusk-afk) : @Dusk-afk] [Discord : Dusk#2577]
 
-_Software Designer_ : NinjaEzPz [Discord : NinjaEzPz#3331]
+_UI Designer_ : NinjaEzPz [Discord : NinjaEzPz#3331]
