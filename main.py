@@ -352,6 +352,7 @@ class Ui_MainWindow(object):
         self.homeButton.clicked.connect(lambda : self.stackedWidget.setCurrentWidget(self.home_screen))
         self.searchButton.clicked.connect(self.searchTask)
         self.copyTagsButton.clicked.connect(self.copyTags)
+        self.lineEdit.returnPressed.connect(self.searchButton.click)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -383,8 +384,11 @@ class Ui_MainWindow(object):
         self.tagsField.setText(str(tags)[1:-1])
 
     def check_video_url(self,url):
-        request = requests.get(url)
-        return not "Video unavailable" in request.text
+        if url.startswith("https://www.youtube.com/watch?v") or url.startswith("https://youtu.be/") or url.startswith("www.youtube.com/watch?v") or url.startswith("www.youtu.be/"):
+            request = requests.get(url)
+            return not "Video unavailable" in request.text
+        else:
+            return False
 
     def searchTask(self):
         self.errorLabel.setText("")
