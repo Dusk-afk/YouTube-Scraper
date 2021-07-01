@@ -388,7 +388,10 @@ class Ui_MainWindow(object):
 
     def searchTask(self):
         self.errorLabel.setText("")
-        if self.lineEdit.text().startswith("http") and "keyword_by_url.png" in self.screenTitleLabel.styleSheet():
+        if self.lineEdit.text() == "":
+            self.errorLabel.setText("You can't leave this field empty")
+
+        elif self.lineEdit.text().startswith("http") and "keyword_by_url.png" in self.screenTitleLabel.styleSheet():
             try:
                 if self.check_video_url(self.lineEdit.text()):
                     self.showTags(self.getTags())
@@ -407,7 +410,7 @@ class Ui_MainWindow(object):
             self.showTags(self.getTags())
 
         else:
-            self.errorLabel.setText("You can't leave this field empty")
+            self.errorLabel.setText("Unexpected error occurred")
 
     def switchToButton1(self):
         self.tagsFieldBGLabel.hide()
