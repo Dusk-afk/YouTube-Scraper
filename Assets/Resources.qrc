@@ -7,6 +7,9 @@
     <file>bg.png</file>
     <file>button_1.png</file>
   </qresource>
+  <qresource prefix="icons">
+    <file>logo.png</file>
+  </qresource>
   <qresource prefix="Screen_2">
     <file>keyword_by_url.png</file>
     <file>copy_tags_hover.png</file>

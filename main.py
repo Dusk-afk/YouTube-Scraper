@@ -84,6 +84,8 @@ class Ui_MainWindow(object):
         MainWindow.setMaximumSize(QtCore.QSize(1000, 600))
         MainWindow.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         MainWindow.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        MainWindow.setWindowTitle("YouTube Scraper")
+        MainWindow.setWindowIcon(QtGui.QIcon(':icon/logo.png'))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.frame = QtWidgets.QFrame(self.centralwidget)
@@ -381,7 +383,7 @@ class Ui_MainWindow(object):
         self.tagsFieldBGLabel.show()
         self.copyTagsButton.show()
         self.tagsField.show()
-        self.tagsField.setText(str(tags)[1:-1])
+        self.tagsField.setText(str(tags)[1:-1].replace("'",""))
 
     def check_video_url(self,url):
         if url.startswith("https://www.youtube.com/watch?v") or url.startswith("https://youtu.be/") or url.startswith("www.youtube.com/watch?v") or url.startswith("www.youtu.be/"):
